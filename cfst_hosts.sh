@@ -6,7 +6,7 @@ exec_dir=~/cfst
 exec_bin="${exec_dir}/CloudflareST"
 result_file="${exec_dir}/result_hosts.txt"
 nowip_file="${exec_dir}/nowip_hosts.txt"
-iplist_url="https://github.com/onlyno999/CloudflareST_Result/raw/refs/heads/main/ip.txt"
+iplist_url="https://raw.githubusercontent.com/onlyno999/CloudflareST_Result/main/ip.txt"
 iplist_file="${exec_dir}/ip.txt"
 pushplus="你的PushPlus token"
 test_count=20
@@ -23,9 +23,9 @@ else
   echo "✅ 主程序已存在，跳過下載。"
 fi
 
-# 下載 ip.txt
+# 下載 ip.txt，模擬瀏覽器User-Agent防止被拒絕
 echo "📥 下載 ip.txt..."
-curl -s -o "$iplist_file" "$iplist_url"
+curl -s -A "Mozilla/5.0" -o "$iplist_file" "$iplist_url"
 if [[ ! -s "$iplist_file" ]]; then
   echo "❌ ip.txt 下載失敗或為空，退出。"
   exit 1
