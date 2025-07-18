@@ -60,8 +60,8 @@ EOF
 
 # 下載 ip.txt 和 ipv6.txt
 download_ipfiles() {
-  local URL_IPV4="https://github.com/onlyno999/CloudflareST_Result/raw/refs/heads/main/ip.txt"
-  local URL_IPV6="https://github.com/onlyno999/CloudflareST_Result/raw/refs/heads/main/ipv6.txt"
+  local URL_IPV4="https://github.xxxxxxxx.nyc.mn/onlyno999/CloudflareST_Result/main/ip.txt"
+  local URL_IPV6="https://github.xxxxxxxx.nyc.mn/onlyno999/CloudflareST_Result/main/ipv6.txt"
 
   if [[ ! -f ip.txt ]]; then
     echo "未找到 ip.txt，嘗試下載..."
