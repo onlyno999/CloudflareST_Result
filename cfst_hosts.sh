@@ -6,8 +6,12 @@ MYHOSTS="$HOME/cloudflare_hosts"
 # 存放当前 IP 的文件
 NOWIP_FILE="$HOME/nowip_hosts.txt"
 
-# CloudflareST测速工具名称（需放在 PATH 或同目录）
+# CloudflareST 测速工具名称（需放在 PATH 或同目录）
 CDN_SPEED_TEST="cdnspeedtest"
+
+# IP 列表文件下载地址
+IPV4_LIST_URL="https://raw.githubusercontent.com/onlyno999/CloudflareST_Result/main/ip.txt"
+IPV6_LIST_URL="https://raw.githubusercontent.com/onlyno999/CloudflareST_Result/main/ipv6.txt"
 
 echo "CloudflareST Termux 自动测速更新 Hosts 脚本"
 
@@ -33,9 +37,28 @@ init_nowip() {
   fi
 }
 
+# 下载 IP 列表（如不存在）
+ensure_ip_lists() {
+  if [[ ! -f "ip.txt" ]]; then
+    echo "未找到 ip.txt，尝试下载..."
+    curl -Lo ip.txt "$IPV4_LIST_URL" || {
+      echo "下载 ip.txt 失败，跳过 IPv4 测速。"
+    }
+  fi
+
+  if [[ ! -f "ipv6.txt" ]]; then
+    echo "未找到 ipv6.txt，尝试下载..."
+    curl -Lo ipv6.txt "$IPV6_LIST_URL" || {
+      echo "下载 ipv6.txt 失败，跳过 IPv6 测速。"
+    }
+  fi
+}
+
 update_hosts() {
   NOWIPV4=$(sed -n '1p' "$NOWIP_FILE")
   NOWIPV6=$(sed -n '2p' "$NOWIP_FILE")
+
+  ensure_ip_lists
 
   echo "开始测速 IPv4..."
   $CDN_SPEED_TEST -f "ip.txt" -o "result_hosts_ipv4.txt" -dd -t 1
