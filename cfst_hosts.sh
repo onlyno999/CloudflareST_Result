@@ -10,7 +10,7 @@ iplist_url="https://raw.githubusercontent.com/onlyno999/CloudflareST_Result/main
 iplist_file="${exec_dir}/ip.txt"
 pushplus="你的PushPlus token"
 test_count=20
-test_url="https://www.gstatic.com/generate_204"  # ✅ 新增：指定测速地址，防止默认失效
+test_url="https://github.xxxxxxxx.nyc.mn/onlyno999/CloudflareST_Result/main/CloudflareST"  # ✅ 新增：指定测速地址，防止默认失效
 
 # === 初始化 ===
 mkdir -p "$exec_dir"
