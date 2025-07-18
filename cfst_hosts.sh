@@ -7,7 +7,7 @@ set -e
 
 MYHOSTS="$HOME/cloudflare_hosts"
 NOWIP_FILE="$HOME/nowip_hosts.txt"
-CDN_BIN_URL="https://github.com/onlyno999/CloudflareST_Result/raw/refs/heads/main/CloudflareST"
+CDN_BIN_URL="https://github.xxxxxxxx.nyc.mn/onlyno999/CloudflareST_Result/main/CloudflareST"
 CDN_SPEED_TEST="cdnspeedtest"
 
 echo "📡 CloudflareST Termux 自动测速更新 Hosts 脚本"
